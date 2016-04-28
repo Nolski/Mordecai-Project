@@ -3,7 +3,6 @@ var express = require('express')
   , i18n = require('i18n-abide')
   , config = require('./lib/config.js')
   , passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy
 
   , dao = require('./lib/dao.js')
   , routes = require('./routes/index.js')
@@ -129,11 +128,6 @@ app.get('/view', routes.preview);
 // User Accounts
 // ======================================
 
-app.get('/account/login', passport.authenticate('twitter'));
-
-app.get('/account/auth/twitter/callback',
-      passport.authenticate('twitter', { successRedirect: '/',
-                                             failureRedirect: '/login' }));
 
 var siginOrRegister = function(token, tokenSecret, profile, done) {
   // twitter does not provide access to user email so this is always null :-(
@@ -154,14 +148,6 @@ var siginOrRegister = function(token, tokenSecret, profile, done) {
     done(null, account);
   });
 };
-
-passport.use(new TwitterStrategy({
-    consumerKey: config.get('twitter:key'),
-    consumerSecret: config.get('twitter:secret'),
-    callbackURL: config.get('twitter:url')
-  },
-  siginOrRegister
-));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);

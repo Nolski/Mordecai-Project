@@ -41,9 +41,7 @@
   <div class="navbar-inner">
     <div class="container">
       <div class="brand">
-        <a href="/" class="black">Time<span class="brand-ext">Mapper</span></a>
-        from
-        <a class="by" href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a>
+        <a class="" href="#">Mordecai Project</a>
       </div>
       <ul class="nav">
       </ul>
@@ -74,20 +72,15 @@
 <div class="content">
 
 {% block content %}{{content}}{% endblock %}
-  </div>
 </div> <!-- /content -->
 </div> <!-- / container-fluid -->
 
 <div class="footer">
   {% block footer %}
-<div class="container">
-  {{ gettext('The <a href="http://timemapper.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a>') }} &ndash; <a href="http://okfnlabs.org/contact/">{{ gettext('Contact Us') }}</a>.
-  {{ gettext('TimeMapper is open-source') }}
-  &ndash; 
-  <a href="https://github.com/okfn/timeliner">{{ gettext('Source Code') }}</a>
-  &ndash;
-  <a href="https://github.com/okfn/timeliner#copyright-and-license">{{ gettext('Copyright') }} &amp; {{ gettext('License') }}</a>.
-</div>
+    <div class="container">
+      <a href="https://github.com/okfn/timeliner">{{ gettext('Source Code') }}</a>
+      &ndash;
+    </div>
   {% endblock %}
 </div>
 

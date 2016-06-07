@@ -21,59 +21,27 @@
   <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
-  <!-- okf ribbon -->
-  <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
+  <link href="/css/main.css" rel="stylesheet">
 
   {% block extrahead %}{% endblock %}
 
   <!-- Custom CSS for the TimeMapper Online App -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
+<body class="{% block bodyclass %}{{bodyclass}}{% endblock %} homepage">
 {% block navbar %}
-<div id="okf-panel" class="collapse">
-  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
-</div>
-<div class="okfn-ribbon">
-  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">{{ gettext('An Open Knowledge Foundation Labs Project') }}</a>
-</div>
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <div class="brand">
-        <a class="" href="#">Mordecai Project</a>
-      </div>
-      <ul class="nav">
-      </ul>
-      <ul class="nav pull-right">
-        <li class="divider-vertical"></li>
-        <li>
-          <a href="https://discuss.okfn.org/c/open-knowledge-labs/timemapper">{{ gettext('Contact Us') }}</a>
-        </li>
-        <li class="divider-vertical"></li>
-        <li>
-          <a href="https://github.com/okfn/timemapper">{{ gettext('Report an Issue') }}</a>
-        </li>
-        <li class="divider-vertical"></li>
-        {% if not currentUser %}
-        <li><a class="logout" href="/account/login" title="sign in"><i class="fa fa-sign-in"></i> Login</a></li>
-        {% endif %}
-        {% if currentUser %} 
-        <li><a class="username" href="/{{currentUser.id}}"><i class="icon-user"></i> {{currentUser.id}}</a></li>
-        <li><a class="logout" href="/account/logout" title="sign out"><i class="fa fa-sign-out"></i></a></li>
-        {% endif %}
-      </ul>
-    </div>
+<div id="page-wrapper">
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+    {% block logo %}{{logo}}{% endblock %}
+    <!-- Nav -->
+    {% include "nav.html" %}
   </div>
 </div>
 {% endblock %}
 
-<div class="container">
-<div class="content">
-
 {% block content %}{{content}}{% endblock %}
-</div> <!-- /content -->
-</div> <!-- / container-fluid -->
 
 <div class="footer">
   {% block footer %}

@@ -2,36 +2,27 @@
 
 {% block bodyclass %}home{% endblock %}
 
-{% block content %}
-    <div class="hero-unit">
-      <h1>
-        Mordecai<span class="brand-ext">Project</span>
-        <small>{{ gettext('Elegant timelines and maps created in seconds') }}</small>
-      </h1>
-      <br />
+{% block logo %}
+    <!-- Logo -->
+    <div id="logo">
+      <h1><a href="index.html">The Mordecai Project</a></h1>
+      <p>A story of a guy... Named Mordecai.</p>
     </div>
+ {% endblock %}
 
-    <div class="examples row">
-      <div class="span12">
-        <h2 style="text-align: center;">{{ gettext("Examples") }}</h2>
-      </div>
-      <div class="span4">
-        <h4><a href="/rufuspollock/major-battles-napoleonic-wars">Battles in the Napoleonic Wars</a></h4>
-        <a href="/rufuspollock/major-battles-napoleonic-wars">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Charles_Th%C3%A9venin_-_Reddition_de_la_ville_d%27Ulm.jpg/320px-Charles_Th%C3%A9venin_-_Reddition_de_la_ville_d%27Ulm.jpg" alt="" />
-        </a>
-      </div>
-      <div class="span4">
-        <h4><a href="/okfn/medieval-philosophers">Medieval Philosophers</a></h4>
-        <a href="/okfn/medieval-philosophers">
-          <img src="http://farm6.staticflickr.com/5323/8768093210_3343870b2a_n.jpg" alt="Medieval Philosophers" />
-        </a>
-      </div>
-      <div class="span4">
-        <h4><a href="http://timemapper.okfnlabs.org/adamrabinowitz/archaeowinetimeliner">Archaeology of Wine</a></h4>
-        <a href="http://timemapper.okfnlabs.org/adamrabinowitz/archaeowinetimeliner">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Hippone_Mosa%C3%AFque_romaine_les_Amours_vendangeurs.jpg/320px-Hippone_Mosa%C3%AFque_romaine_les_Amours_vendangeurs.jpg?uselang=en-gb" alt="" />
-        </a>
-      </div>
-    </div>
+{% block content %}
+  <!-- Intro -->
+  <div id="intro-wrapper" class="wrapper style1">
+    <div class="title">The Introduction</div>
+    <section id="intro" class="container">
+      <p class="style1">So in case you were wondering what this is all about ...</p>
+      <p class="style2">
+        Mordecai was Nunc eleifend leo vitae magna.
+      </p>
+      <p class="style3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl.</p>
+      <ul class="actions">
+        <li><a href="#" class="button style3 big">Proceed</a></li>
+      </ul>
+    </section>
+  </div>
 {% endblock %}

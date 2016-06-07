@@ -1,0 +1,27 @@
+{
+  "licenses": [
+    {
+      "type": "cc-by",
+      "name": "Creative Commons Attribution",
+      "version": "3.0",
+      "url": "http://creativecommons.org/licenses/by/3.0/"
+    }
+  ],
+  "resources": [
+    {
+      "backend": "gdocs",
+      "url": "https://docs.google.com/spreadsheets/d/1CnPfs0lFUSgtYcmsYOgKzqjhlD_6UuwJSX2wzvUxdyA/edit?usp=drive_web"
+    }
+  ],
+  "title": "GA_TimeMapper.xlsx",
+  "tmconfig": {
+    "viewtype": "timemap",
+    "dayfirst": true,
+    "startfrom": "start",
+    "__proto__": {}
+  },
+  "owner": "anon",
+  "name": "n4l29h-ga_timemapperxlsx",
+  "_last_modified": "2016-04-22T17:02:17.522Z",
+  "_created": "2016-04-22T17:02:17.522Z"
+}

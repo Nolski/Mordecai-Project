@@ -40,21 +40,42 @@ function urlFor(owner, dataView) {
 }
 
 exports.preview = function(req, res) {
+  console.log(req.query.url);
+  /////////////////////////////////////////////////////////////
+  // var threadData = {                                      //
+  //   name: 'whatever-you-want',                            //
+  //   title: req.query.title || 'bboivw-ga_timemapperxlsx', //
+  //   owner: req.query.owner || 'anon',                     //
+  //   resources: [                                          //
+  //     {                                                   //
+  //       url: req.query.url,                               //
+  //       backend: 'gdocs'                                  //
+  //     }                                                   //
+  //   ],                                                    //
+  //   tmconfig: {                                           //
+  //     dayfirst: req.query.dayfirst,                       //
+  //     startfrom: req.query.startfrom,                     //
+  //     viewtype: req.query.viewtype || 'timemap'           //
+  //   }                                                     //
+  // };                                                      //
+  /////////////////////////////////////////////////////////////
   var threadData = {
-    name: 'whatever-you-want',
-    title: req.query.title || 'Untitled',
-    owner: req.query.owner || 'Anonymous',
     resources: [
       {
-        url: req.query.url,
-        backend: 'gdocs'
+        backend: "gdocs",
+        url: "https://docs.google.com/spreadsheets/d/1CnPfs0lFUSgtYcmsYOgKzqjhlD_6UuwJSX2wzvUxdyA/edit?usp=sharing"
       }
     ],
+    title: "GA_TimeMapper.xlsx",
     tmconfig: {
-      dayfirst: req.query.dayfirst,
-      startfrom: req.query.startfrom,
-      viewtype: req.query.viewtype || 'timemap'
-    }
+      viewtype: "timemap",
+      dayfirst: true,
+      startfrom: "start",
+    },
+    "owner": "anon",
+    "name": "bboivw-ga_timemapperxlsx",
+    "_last_modified": "2016-06-06T15:26:56.240Z",
+    "_created": "2016-06-06T15:26:56.240Z"
   };
   var isOwner = false;
   res.render('dataview/timemap.html', {
@@ -138,13 +159,13 @@ var routePrefixes = {
 };
 
 exports.timeMap = function(req, res, next) {
-  var userId = req.params.userId;
+  var userId = req.params.userId || 'anon';
   // HACK: we only want to handle threads and not other stuff
   if (userId in routePrefixes) {
     next();
     return;
   }
-  var threadName = req.params.threadName;
+  var threadName = req.params.threadName || 'bboivw-ga_timemapperxlsx';
   var viz = dao.DataView.create({owner: userId, name: threadName});
   viz.fetch(function(error) {
     if (error) {
@@ -152,7 +173,7 @@ exports.timeMap = function(req, res, next) {
       return;
     }
     var threadData = viz.toTemplateJSON();
-    var isOwner = (req.user && req.user.id == threadData.owner);
+    console.log(threadData);
     res.render('dataview/timemap.html', {
         title: threadData.title
       , permalink: 'http://timemapper.okfnlabs.org/' + threadData.owner + '/' + threadData.name
@@ -160,7 +181,7 @@ exports.timeMap = function(req, res, next) {
       , embed: (req.query.embed !== undefined)
       , viz: threadData
       , vizJSON: JSON.stringify(threadData)
-      , isOwner: isOwner
+      , isOwner: false 
     });
   });
 }

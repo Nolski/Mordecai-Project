@@ -1,0 +1,27 @@
+{
+  "licenses": [
+    {
+      "type": "cc-by",
+      "name": "Creative Commons Attribution",
+      "version": "3.0",
+      "url": "http://creativecommons.org/licenses/by/3.0/"
+    }
+  ],
+  "resources": [
+    {
+      "backend": "gdocs",
+      "url": "https://docs.google.com/spreadsheets/d/1CnPfs0lFUSgtYcmsYOgKzqjhlD_6UuwJSX2wzvUxdyA/edit?usp=sharing"
+    }
+  ],
+  "title": "Test Map",
+  "tmconfig": {
+    "viewtype": "timemap",
+    "dayfirst": true,
+    "startfrom": "start",
+    "__proto__": {}
+  },
+  "owner": "anon",
+  "name": "ap3veq-test-map",
+  "_last_modified": "2016-04-22T16:46:45.459Z",
+  "_created": "2016-04-22T16:46:45.459Z"
+}

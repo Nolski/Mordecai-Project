@@ -125,59 +125,11 @@ app.post('/create', routes.createPost);
 app.get('/view', routes.preview);
 
 // ======================================
-// User Accounts
-// ======================================
-
-
-var siginOrRegister = function(token, tokenSecret, profile, done) {
-  // twitter does not provide access to user email so this is always null :-(
-  var email = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null;
-  var photo = profile.photos && profile.photos.length > 0 ? profile.photos[0].value : null;
-  account = dao.Account.create({
-    id: profile.username.toLowerCase(),
-    fullname: profile.displayName,
-    // hackish
-    description: profile._json.description,
-    provider: 'twitter',
-    email: email,
-    image: photo,
-    manifest_version: 1 });
-  account.save(function(err) {
-    if (err) { return done(err); }
-    // req.flash('success', 'Thanks for signing-up');
-    done(null, account);
-  });
-};
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  var account = dao.Account.create({
-    id: id
-  });
-  account.fetch(function(err, user) {
-    done(err, account);
-  });
-});
-
-app.get('/account/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-
-// ======================================
-// User Pages and Dashboards
-// ======================================
-
-app.get('/:userId', routes.userShow);
-
-// ======================================
 // Data Views
 // ======================================
 
 app.get('/:userId/:threadName', routes.timeMap);
+app.get('/map', routes.timeMap);
 
 app.get('/:userId/:threadName/edit', routes.dataViewEdit);
 app.post('/:userId/:threadName/edit', routes.dataViewEditPost);

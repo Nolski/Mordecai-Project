@@ -523,10 +523,16 @@
 				color: #484d55;
 			}
 
-			.image {
-				border: solid 10px #fff;
-			}
 		}
+
+    .image {
+      background: #FFF;
+      padding: 10px;
+
+      .caption {
+        color: #484d55;
+      }
+    }
 	}
 
 	#header-wrapper {
@@ -1659,3 +1665,32 @@
 			}
 
 	}
+
+.hero {
+  width: 100%;
+  height: 300px;
+  margin: 20px 0;
+}
+
+.mordechai-family {
+  @extend .hero;
+  background-image: url('/img/home/family.png');
+}
+
+.body-text {
+  margin: 0 auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  color: #444;
+  padding: 0 10px;
+
+  p {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .caption {
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}

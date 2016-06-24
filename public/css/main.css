@@ -1199,8 +1199,11 @@ ol.default {
     .wrapper.style3 .title {
       background: #f3f3f3 url("img/overlay.png");
       color: #484d55; }
-    .wrapper.style3 .image {
-      border: solid 10px #fff; }
+  .wrapper .image {
+    background: #FFF;
+    padding: 10px; }
+    .wrapper .image .caption {
+      color: #484d55; }
 
 #header-wrapper {
   background: url("../../img/banner.jpg") center center;
@@ -1984,5 +1987,25 @@ ol.default {
         margin: 0.5em 0 0 0; }
         #copyright ul li:first-child {
           margin-top: 0; } }
+.hero, .mordechai-family {
+  width: 100%;
+  height: 300px;
+  margin: 20px 0; }
+
+.mordechai-family {
+  background-image: url("/img/home/family.png"); }
+
+.body-text {
+  margin: 0 auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  color: #444;
+  padding: 0 10px; }
+  .body-text p {
+    color: rgba(255, 255, 255, 0.75); }
+  .body-text .caption {
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.6); }
 
 /*# sourceMappingURL=main.css.map */

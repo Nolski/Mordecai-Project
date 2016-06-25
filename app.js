@@ -123,6 +123,7 @@ app.get('/', function(req, res){
 app.get('/create', routes.create);
 app.post('/create', routes.createPost);
 app.get('/view', routes.preview);
+app.get('/about', routes.about);
 
 // ======================================
 // Data Views

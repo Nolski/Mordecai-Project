@@ -32,6 +32,10 @@ exports.createPost = function(req, res) {
   });
 }
 
+exports.about = function(req, res) {
+  res.render('about.html');
+};
+
 function urlFor(owner, dataView) {
   return '/' + [
     owner,

@@ -28,6 +28,8 @@ var TimeMapperView = Backbone.View.extend({
     'submit .toolbox form': '_onSearch'
   },
 
+  timeline: null,
+
   initialize: function(options) {
     var self = this;
     this._setupOnHashChange();
@@ -122,7 +124,7 @@ var TimeMapperView = Backbone.View.extend({
         }, {silent: true}
         );
       }
-      var startDate = VMM.Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst));
+      var startDate = Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst));
       var data = {
         // VMM.Date.parse is the timelinejs date parser
         startParsed: startDate,
@@ -178,6 +180,7 @@ var TimeMapperView = Backbone.View.extend({
           record.marker.openPopup();
         }
       }
+      self.timeline.timeline.goTo(hash);
     });
   },
 
@@ -219,34 +222,32 @@ var TimeMapperView = Backbone.View.extend({
       }
       if (!out) {
         if (typeof console !== "undefined" && console.warn) {
-          console.warn('Failed to extract timeline entry from record');
-          console.warn(record.toJSON());
+          console.warn('Failed to extract timeline entry from record', record.toJSON());
         }
         return null;
       }
       if (record.get('media')) {
-        out.asset = {
-          media: record.get('media'),
+        out.media = {
+          url: record.get('media'),
           caption: record.get('mediacaption'),
           credit: record.get('mediacredit'),
           thumbnail: record.get('icon')
         };
       }
-      out.headline = record.get('title');
-      if (record.get('url')) {
-        out.headline = '<a href="%url" class="title-link" title="%url">%headline <i class="icon-external-link title-link"></i></a>'
-          .replace(/%url/g, record.get('url'))
-          .replace(/%headline/g, out.headline)
-          ;
-      }
-      out.text = record.get('description');
-      if (record.get('source') || record.get('sourceurl')) {
-        var s = record.get('source') || record.get('sourceurl');
-        if (record.get('sourceurl')) {
-          s = '<a href="' + record.get('sourceurl') + '">' + s + '</a>';
-        }
-        out.text += '<p class="source">Source: ' + s + '</p>';
-      }
+      // TODO: Convert to Timeline3
+      // if (record.get('url')) {
+      //   out.headline = '<a href="%url" class="title-link" title="%url">%headline <i class="icon-external-link title-link"></i></a>'
+      //     .replace(/%url/g, record.get('url'))
+      //     .replace(/%headline/g, out.headline)
+      //     ;
+      // }
+      // if (record.get('source') || record.get('sourceurl')) {
+      //   var s = record.get('source') || record.get('sourceurl');
+      //   if (record.get('sourceurl')) {
+      //     s = '<a href="' + record.get('sourceurl') + '">' + s + '</a>';
+      //   }
+      //   out.text += '<p class="source">Source: ' + s + '</p>';
+      // }
 
       return out;
     };

@@ -1698,3 +1698,32 @@
 .tl-slide .tl-slide-content-container .tl-slide-content {
   width: 100% !important;
 }
+
+.modal {
+  width: 900px;
+  margin-left: -440px;
+  min-height: 700px !important;
+
+  .modal-body {
+    width: 95%;
+    max-height: 600px !important;
+    font-size: 14pt;
+    line-height: 1.8em;
+    margin: 20px;
+  }
+
+  .close {
+    min-width: auto;
+    height: auto;
+    font-size: 1.5em;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .modal-header {
+    font-size: 18pt;
+    line-height: normal;
+  }
+}
